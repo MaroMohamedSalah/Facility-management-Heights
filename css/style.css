@@ -1,5 +1,7 @@
 :root{
     --font-color : #FFFDFA;
+    --second-color: darkslategray;
+    --third-color: #4db6ac;
 }
 
 *{
@@ -11,6 +13,7 @@
 }
 html{
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 body{
     overflow-x: hidden;
@@ -89,28 +92,73 @@ ul{
     width: 55%;
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
+    /* align-items: center; */
+    opacity: 1;
+}
+.nav-on-phone{
+    display: none;
 }
 .intro  nav .container ul a{
     color: var(--font-color);
 }
 .intro  nav .container ul a li{
+    position: relative;
     font-size: 18px;
     font-weight: 900;
-    padding: 0 30px;
+}
+.intro  nav .container ul a li::after{
+    content: '';
+    position: absolute;
+    bottom: -7px;
+    height: 3px;
+    width: 0;
+    background-color: var(--second-color);
+    left: 0;
+    transition: all 0.5s ease-in-out;
+}
+.intro  nav .container ul a li:hover::after{
+    width: 100%;
+}
+.nav-on-phone{
+    font-size: 35px;
+    color: var(--third-color);
 }
     /* Small */
     @media screen and ( max-width: 768px) {
-        .intro  nav .container{
-            background-color: darkslategray;
+        .intro  nav {
+            background-color: var(--second-color);
+        }
+        .intro  nav .container ul{
+            position: absolute;
+            flex-direction: column;
+            top: 119px;
+            left: 50%;
+            transform: translateX(-50%);
+            justify-content: flex-start;
+            width: 100%;
+            text-align: none;
+            padding-left: 23px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: #4db6ac8f;
+            opacity: 0;
+            transition: all 0.5s ease-in-out;
+        }
+        .intro nav .container ul a li {
+            padding: 15px;
+        }
+        .nav-on-phone{
+            display: block;
+        }
+    }
+      /* Medium */
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+        .intro  nav {
+            background-color: var(--second-color);
         }
         .intro  nav .container ul{
             display: none;
         }
-    }
-      /* Medium */
-    @media screen and (max-width: 992px) {
-        
     }
 
 .arrows{
@@ -136,7 +184,7 @@ ul{
     cursor: pointer;
 }
 .arrows div:hover{
-    background-color: darkslategray;
+    background-color: var(--second-color);
 }
 
 .intro  .bobs{
@@ -155,25 +203,27 @@ ul{
     height: 17px;
     border-radius: 20px;
     background-color: var(--font-color);
-    border: darkslategray solid 7px;
+    border: var(--second-color) solid 7px;
     cursor: pointer;
     transition: all 0.5s ease-in-out;
 }
 .intro  .bobs div:hover,
 .intro  .bobs .active{
-    background-color: darkslategray;
+    background-color: var(--second-color);
     border: var(--font-color) solid 7px;
 }
 
     /* Small */
     @media screen and ( max-width: 768px) {
         .intro  .bobs{
-            width: 57%;
+            width: 47%;
         }
     }
       /* Medium */
-    @media screen and (max-width: 992px) {
-        
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+        .intro  .bobs{
+            width: 29%;
+        }
     }
 .slider img{
     position: absolute;
@@ -190,11 +240,17 @@ ul{
 
 #advantages{
     position: absolute;
-    top: 75%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
+    top: 79%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    width: 54%;
     text-align: center;
+}
+
+#advantages h1{
+    line-height: 1.4;
+    color: var(--font-color);
+    font-weight: 900;
 }
 
 #preview{
@@ -222,10 +278,236 @@ ul{
             height: 100%;
         }
         .slider img{
-            width: 330%;
+            width: 490%;
         }
     }
       /* Medium */
-    @media screen and (max-width: 992px) {
-        
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+        .slider{
+            height: 100%;
+        }
+        .slider img{
+            width: 490%;
+        }
+    }
+
+    
+/* about section */
+.about{
+    min-height: 100vh;
+}
+.about .title{
+    position: relative;
+    text-align: center;
+    margin: 20px;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 8px;
+}
+.about .title::after{
+    content: '';
+    position: absolute;
+    width: 150.5%;
+    height: 216%;
+    background-color: var(--third-color);
+    left: -215px;
+    top: -20px;
+    z-index: -1;
+}
+
+.about .container{
+    min-height: 100%;
+}
+.about .container .sec1,
+.about .container .sec2,
+.about .container .sec3 {
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.about .container .image{
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    height: 100%;
+    right: -220px;
+}
+.about .container #fimg{
+    left: -220px;
+    height: 100%;
+}
+.about .container .image img{
+    width: 1298px;
+    transform: translateX(-151px);
+}
+.about .container .image::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--third-color);
+}
+.about .container p{
+    font-size: 33px;
+    text-align: center;
+    line-height: 1.2;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    transform: translateX(91px);
+}
+.about .container p a{
+    color: var(--second-color);
+    transition: all 0.5s ease-in-out;
+}
+.about .container p a:hover{
+    color: var(--third-color);
+}
+#p2{
+    transform: translateX(-91px);
+}
+    /* Small */
+    @media screen and ( max-width: 768px) {
+        .about .container .image{
+            display: none;
+        }
+        .about .title::after {
+            width: 123.5%;
+            left: -36px;
+        }
+    }
+      /* Medium */
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+
+    }
+
+/* style services */
+.services {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2 , 1fr);
+    grid-template-rows: repeat(4 , 1fr);
+    height: 273vh;
+    width: 100%;
+}
+.services  .soft{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% , -50%);
+    width: 243px;
+    height: 142px;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid var(--third-color);
+    cursor: pointer;
+}
+.services  .serv{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.services  .span{
+    grid-column: span 2;
+}
+.services  .serv .overlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    width: 100%;
+    height: 100%;
+    /* width: 92%;
+    height: 92%; */
+    background-color: var(--second-color);
+    z-index: 2;
+    /* opacity: 0.75; */
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+.services  .serv:hover .overlay{
+    opacity: 0.85;
+    width: 92%;
+    height: 92%;
+}
+.services .serv img{
+    position: relative;
+    width: 152%;
+}
+.services .serv .details{
+    position: absolute;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    width: 100%;
+}
+.services .serv .details h1{
+    position: relative;
+    color: var(--font-color);
+    font-weight: 800;
+    font-size: 23px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.services .serv .details h1::after{
+    content: '';
+    position: absolute;
+    height: 1.5px;
+    width: 50%;
+    background-color: red;
+    bottom: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.services .serv .details h3{
+    text-align: center;
+    color: var(--font-color);
+}
+.services .serv .details .more{
+    transform: translateY(34px);
+    color: var(--third-color);
+    font-size: 10px;
+    font-weight: 500;
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    cursor: pointer;
+}
+.services  .serv:hover .details .more{
+    transform: translateY(10px);
+    opacity: 1;
+}
+.services .serv img:nth-of-type(1){
+    left: -180px;
+    top: -60px;
+}
+.services .serv:nth-of-type(3) img{
+    width: 209%;
+}
+.services .serv:nth-of-type(4) img{
+    width: 209%;
+}
+.services .span img{
+    left: -180px;
+    top: -60px;
+    width: 200%;
+}
+
+    /* Small */
+    @media screen and ( max-width: 768px) {
+        .services{
+            display: flex;
+            flex-direction: column;
+        }
+        .services .span img{
+            width: 450%;
+        }
+    }
+      /* Medium */
+    @media screen and (min-width: 769px) and (max-width: 992px) {
+
     }
