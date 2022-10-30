@@ -1,3 +1,6 @@
+// media query for phone 
+const phone = window.matchMedia('(max-width: 768px)');
+
 // nav bar on phone 
 let navBtn = document.getElementById("navOnPhone");
 let navList = document.querySelector('.intro  nav .container ul');
@@ -125,4 +128,126 @@ for(let i = 0 ; i < numberOfImgs ; i++){
 
 // services section 
 let servImgs = document.querySelectorAll('.services .container .images div img');
-console.log(servImgs);
+let hard = document.getElementById("hard");
+let soft = document.getElementById("soft");
+
+
+// our partners slide
+let partnerNext = document.getElementById("next");
+let partnerPre = document.getElementById("pre");
+let partnersImg = Array.from(document.querySelectorAll('#partnersImg a'));
+let partnersSlide = document.getElementById("partnersSlide");
+let partnersArray;
+let MAX;
+if (phone.matches) {
+    MAX = 2;
+}else {
+    MAX = 5;
+}
+let count2 = 0;
+let numberOfSections = Math.ceil(partnersImg.length / MAX);
+for(let i = 0 ; i < numberOfSections ; i++){
+    let section = document.createElement('section');
+    section.id = `part${i+1}`;
+    if(partnersImg.length > MAX ){
+        for(let j = 0 ; j < MAX ; j++){
+            section.appendChild(partnersImg.shift());
+            console.log(partnersImg.length)
+        }
+    }else{
+        while (partnersImg.length != 0) {
+            section.appendChild(partnersImg.shift());
+            console.log(partnersImg.length)
+        }
+    }
+    partnersSlide.appendChild(section);
+}
+
+partnersArray = Array.from(document.querySelectorAll("#partnersSlide section"))
+partnerNext.onclick = () => {
+    console.log(`numberOfSections: ${numberOfSections}`)
+    console.log(`count2: ${count2}`)
+    if(count2 >= 0 && count2 < numberOfSections -1){
+        count2++;
+        console.log(partnersArray[count2])
+        partnersArray[count2].style.transform = "translateX(0)"
+        partnersArray[count2-1].style.transform = "translateX(100%)"
+
+        setTimeout(() => {
+            partnersArray[count2-1].style.display = "none";
+            partnersArray[count2-1].style.transform = "translateX(-100%)";
+            setTimeout(() => {
+                partnersArray[count2-1].style.display = "flex";
+            }, 500);
+        }, 1000);
+    }
+    else if(count2 == numberOfSections - 1) {
+        count2=0;
+        console.log(partnersArray[count2])
+        partnersArray[count2].style.transform = "translateX(0)"
+        // partnersArray[count2+1].style.transform = "translateX(100%)"
+        partnersArray[numberOfSections - 1].style.transform = "translateX(100%)"
+        setTimeout(() => {
+            partnersArray[numberOfSections - 1].style.display = "none";
+            partnersArray[numberOfSections - 1].style.transform = "translateX(-100%)";
+            setTimeout(() => {
+                partnersArray[numberOfSections - 1].style.display = "flex";
+            }, 500);
+        }, 1000);
+    }
+    console.log(`count2#: ${count2}`);
+}
+
+partnerPre.onclick = () => {
+    console.log(`count2#: ${count2}`);
+    if(count2 > 0 ){
+        count2--;
+        console.log(partnersArray[count2]);
+        partnersArray[count2].style.transform = "translateX(0)"
+        partnersArray[count2+1].style.transform = "translateX(-100%)"
+
+        setTimeout(() => {
+            partnersArray[count2+1].style.display = "none";
+            partnersArray[count2+1].style.transform = "translateX(-100%)";
+            setTimeout(() => {
+                partnersArray[count2+1].style.display = "flex";
+            }, 500);
+        }, 1000);
+    }
+    else if(count2 == 0) {
+        count2 = numberOfSections - 1;
+        console.log(partnersArray[count2])
+        partnersArray[count2].style.transform = "translateX(0)"
+        partnersArray[count2 - 1].style.transform = "translateX(100%)"
+        setTimeout(() => {
+            partnersArray[count2 - 1].style.display = "none";
+            partnersArray[count2 - 1].style.transform = "translateX(-100%)";
+            setTimeout(() => {
+                partnersArray[count2 - 1].style.display = "flex";
+            }, 500);
+        }, 1000);
+    }
+}
+
+// handel repeat next slide
+setInterval(() => {
+    partnerNext.click();
+}, 7000);
+
+// to top btn
+let toTop = document.getElementById("topBtn");
+window.onscroll = () => {
+    console.log(window.scrollY)
+    if(window.scrollY > 670){
+        toTop.style.opacity = '1';
+        toTop.style.transform = "translateY(-30px)"
+    }else{
+        toTop.style.opacity = '0';
+        toTop.style.transform = "translateY(0px)"
+    }
+}
+toTop.onclick = () => {
+    window.scrollTo(0,0);
+}
+
+
