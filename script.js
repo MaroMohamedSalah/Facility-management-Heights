@@ -234,6 +234,10 @@ setInterval(() => {
     partnerNext.click();
 }, 7000);
 
+
+// contact
+let logo = Array.from(document.querySelectorAll("#logo img"));
+
 // to top btn
 let toTop = document.getElementById("topBtn");
 window.onscroll = () => {
@@ -244,6 +248,12 @@ window.onscroll = () => {
     }else{
         toTop.style.opacity = '0';
         toTop.style.transform = "translateY(0px)"
+    }
+    if(window.scrollY > 5000){
+        for (let index = 0; index < logo.length; index++) {
+            const element = logo[index];
+            element.style.opacity = '1';
+        }
     }
 }
 toTop.onclick = () => {
