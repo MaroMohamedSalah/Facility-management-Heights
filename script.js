@@ -22,6 +22,7 @@ navBtn.onclick = () => {
 }
 
 
+
 // slider 
 let advantagesArr = [
     "<h1>Customer focus makes us stronger</h1>",
@@ -152,12 +153,10 @@ for(let i = 0 ; i < numberOfSections ; i++){
     if(partnersImg.length > MAX ){
         for(let j = 0 ; j < MAX ; j++){
             section.appendChild(partnersImg.shift());
-            console.log(partnersImg.length)
         }
     }else{
         while (partnersImg.length != 0) {
             section.appendChild(partnersImg.shift());
-            console.log(partnersImg.length)
         }
     }
     partnersSlide.appendChild(section);
@@ -165,11 +164,8 @@ for(let i = 0 ; i < numberOfSections ; i++){
 
 partnersArray = Array.from(document.querySelectorAll("#partnersSlide section"))
 partnerNext.onclick = () => {
-    console.log(`numberOfSections: ${numberOfSections}`)
-    console.log(`count2: ${count2}`)
     if(count2 >= 0 && count2 < numberOfSections -1){
         count2++;
-        console.log(partnersArray[count2])
         partnersArray[count2].style.transform = "translateX(0)"
         partnersArray[count2-1].style.transform = "translateX(100%)"
 
@@ -183,9 +179,7 @@ partnerNext.onclick = () => {
     }
     else if(count2 == numberOfSections - 1) {
         count2=0;
-        console.log(partnersArray[count2])
         partnersArray[count2].style.transform = "translateX(0)"
-        // partnersArray[count2+1].style.transform = "translateX(100%)"
         partnersArray[numberOfSections - 1].style.transform = "translateX(100%)"
         setTimeout(() => {
             partnersArray[numberOfSections - 1].style.display = "none";
@@ -195,11 +189,9 @@ partnerNext.onclick = () => {
             }, 500);
         }, 1000);
     }
-    console.log(`count2#: ${count2}`);
 }
 
 partnerPre.onclick = () => {
-    console.log(`count2#: ${count2}`);
     if(count2 > 0 ){
         count2--;
         console.log(partnersArray[count2]);
@@ -253,6 +245,43 @@ window.onscroll = () => {
         for (let index = 0; index < logo.length; index++) {
             const element = logo[index];
             element.style.opacity = '1';
+        }
+    }
+    // nav onscroll
+    let nav = document.querySelector(".intro nav");
+    let navPointer = document.getElementById("pointer");
+    let navLogo = document.getElementById("navLogo");
+    let navListItems = Array.from(document.querySelectorAll(".intro  nav .container ul a li"));
+    let navLinkList = Array.from(document.querySelectorAll(".intro  nav .container ul a"));
+    if(!phone.matches){
+        if(window.scrollY >= 550){
+        navListItems[0].textContent = 'Soft Services'
+        navListItems[1].textContent = 'Hard Services'
+        navLinkList[0].href = '#soft';
+        navLinkList[1].href = '#hard';
+        nav.style.cssText = `background-color: var(--second-color); opacity: 0.75;`
+        navLogo.style.display = "none"
+        document.querySelector(".intro nav .container").style.cssText = `
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 51px;`
+        navList.style.width = '98%'
+        navPointer.style.display = 'block'
+        if(window.scrollY >= 736 && window.scrollY < 2000){
+            navPointer.style.left = '22.5%'
+        }else if (window.scrollY >= 2000 && window.scrollY < 4400){
+            navPointer.style.left = '39.75%'
+        }else if(window.scrollY > 4400) {
+            navPointer.style.left = '55.75%'
+        }
+        }else{
+            navListItems[0].textContent = 'About'
+            navListItems[1].textContent = 'Services'
+            navPointer.style.display = "none"
+            nav.style = window.getComputedStyle(nav);
+            navLogo.style.display = "block";
+            document.querySelector(".intro nav .container").style = window.getComputedStyle(document.querySelector(".intro nav .container"));
         }
     }
 }
