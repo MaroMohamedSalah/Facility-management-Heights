@@ -136,7 +136,7 @@ let soft = document.getElementById("soft");
 // our partners slide
 let partnerNext = document.getElementById("next");
 let partnerPre = document.getElementById("pre");
-let partnersImg = Array.from(document.querySelectorAll('#partnersImg a'));
+let partnersImg = Array.from(document.querySelectorAll('#partnersImg img'));
 let partnersSlide = document.getElementById("partnersSlide");
 let partnersArray;
 let MAX;
@@ -228,7 +228,7 @@ setInterval(() => {
 
 
 // contact
-let logo = Array.from(document.querySelectorAll("#logo img"));
+let logo = document.querySelector("#logo img");
 
 // to top btn
 let toTop = document.getElementById("topBtn");
@@ -242,10 +242,7 @@ window.onscroll = () => {
         toTop.style.transform = "translateY(0px)"
     }
     if(window.scrollY > 5000){
-        for (let index = 0; index < logo.length; index++) {
-            const element = logo[index];
-            element.style.opacity = '1';
-        }
+        logo.style.opacity = '1';
     }
     // nav onscroll
     let nav = document.querySelector(".intro nav");
@@ -269,11 +266,13 @@ window.onscroll = () => {
         navList.style.width = '98%'
         navPointer.style.display = 'block'
         if(window.scrollY >= 736 && window.scrollY < 2000){
-            navPointer.style.left = '22.5%'
+            navPointer.style.left = '12.5%'
         }else if (window.scrollY >= 2000 && window.scrollY < 4400){
-            navPointer.style.left = '39.75%'
-        }else if(window.scrollY > 4400) {
-            navPointer.style.left = '55.75%'
+            navPointer.style.left = '36.45%'
+        }else if(window.scrollY > 4400 && window.scrollY < 4750) {
+            navPointer.style.left = '59%'
+        }else if(window.scrollY > 4750){
+            nav.style.display = 'none'
         }
         }else{
             navListItems[0].textContent = 'About'
@@ -282,6 +281,7 @@ window.onscroll = () => {
             nav.style = window.getComputedStyle(nav);
             navLogo.style.display = "block";
             document.querySelector(".intro nav .container").style = window.getComputedStyle(document.querySelector(".intro nav .container"));
+            document.querySelector(".intro nav .container ul").style.width = "53%";
         }
     }
 }

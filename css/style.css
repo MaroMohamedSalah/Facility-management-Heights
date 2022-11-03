@@ -1,7 +1,11 @@
 :root{
     --font-color : #FFFDFA;
+    --second-color: #891b32;
+    --third-color: #afadad;
+    --fourth-color: #28334AFF;
+    /* --font-color : #FFFDFA;
     --second-color: #006055;
-    --third-color: #4db6ac;
+    --third-color: #4db6ac; */
 }
 
 *{
@@ -94,13 +98,12 @@ ul{
     z-index: 2;
 }
 .intro  nav .container .logo img{
-    width: 189px;
+    width: 122px;
 }
 .intro  nav .container ul{
-    width: 55%;
+    width: 53%;
     display: flex;
-    justify-content: space-evenly;
-    /* align-items: center; */
+    justify-content: space-between;
     opacity: 1;
 }
 .intro  nav .container ul #pointer{
@@ -110,7 +113,7 @@ ul{
     height: 100%;
     background-color: var(--third-color);
     top: 0;
-    left: 22.5%;
+    left: 12.5%;
     transition: all 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 .nav-on-phone{
@@ -196,7 +199,8 @@ ul{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(47, 79, 79, 0.507);
+    /* background-color: rgba(47, 79, 79, 0.507); */
+    background-color: #891b334c;
     color: var(--font-color);
     transition: all 0.5s ease-in-out;
     cursor: pointer;
@@ -426,20 +430,23 @@ ul{
 }
 .services  .serv .overlay{
     position: absolute;
-    top: 50%;
+    /* top: 50%;
     left: 50%;
-    transform: translate(-50% , -50%);
+    transform: translate(-50% , -50%); */
+    left: 0;
+    bottom: -100%;
     width: 100%;
     height: 100%;
     background-color: var(--second-color);
     z-index: 2;
     opacity: 0;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.5s cubic-bezier(0.39, 0.58, 0.57, 1);
 }
 .services  .serv:hover .overlay{
     opacity: 0.85;
-    width: 92%;
-    height: 92%;
+    /* width: 92%;
+    height: 92%; */
+    bottom: 0;
 }
 .services .serv img{
     position: relative;
@@ -627,7 +634,8 @@ ul{
     transform: translateX(-100%);
 }
 .partners .container .partnerBar img{
-    width: 100%;
+    /* width: 100%; */
+    width: 13%;
 }
 #partnersImg{
     opacity: 0;
@@ -641,16 +649,15 @@ ul{
     text-align: center;
     margin-top: 74px;
 }
-.partners .container .other div a{
-    color: var(--second-color);
-}
 .partners .container .other div h3{
+    color: var(--second-color);
     position: relative;
     text-align: start;
     margin: 10px;
     font-weight: 400;
+    cursor: pointer;
 }
-.partners .container .other div a h3::after{
+.partners .container .other div h3::after{
     content: '';
     position: absolute;
     bottom: -3px;
@@ -660,7 +667,7 @@ ul{
     left: 0px;
     transition: all 0.5s ease-in-out;
 }
-.partners .container .other div a:hover h3::after{
+.partners .container .other div h3:hover::after{
     width: 10%;
 }
 .partners .container .other div h1{
@@ -702,6 +709,7 @@ ul{
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    margin-top: 6px;
 }
 .contact .container .part3{
     align-items: center;
@@ -710,13 +718,14 @@ ul{
 }
 .contact .container .part1 .logo{
     position: relative;
+    margin-bottom: 16px;
+    margin-top: -50px;
 }
 .contact .container .part1 .logo img{
-    position: absolute;
     width: 185px;
     top: -69px;
     opacity: 0;
-    transition: all 7s 0.5s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 .contact .container .part2 a {
     color: var(--font-color);
