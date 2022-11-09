@@ -9,7 +9,7 @@ navBtn.onclick = () => {
     if(count === 0){
         count++;
         navList.style.opacity  = '1';
-        navList.style.top  = ' 92px';
+        navList.style.top  = '68px';
     }else{
         count = 0;
         navList.style.opacity  = '0';
@@ -277,6 +277,8 @@ window.onscroll = () => {
         }else{
             navListItems[0].textContent = 'About'
             navListItems[1].textContent = 'Services'
+            navLinkList[0].href = './other/about.html';
+            navLinkList[1].href = '#services';
             navPointer.style.display = "none"
             nav.style = window.getComputedStyle(nav);
             navLogo.style.display = "block";
