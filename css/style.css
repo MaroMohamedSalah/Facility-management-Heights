@@ -109,7 +109,7 @@ ul{
 .intro  nav .container ul #pointer{
     display: none;
     position: absolute;
-    width: 155px;
+    width: 145px;
     height: 100%;
     background-color: var(--third-color);
     top: 0;
@@ -199,7 +199,6 @@ ul{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: rgba(47, 79, 79, 0.507); */
     background-color: #891b334c;
     color: var(--font-color);
     transition: all 0.5s ease-in-out;
